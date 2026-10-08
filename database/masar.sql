@@ -1,7 +1,7 @@
 -- =============================================================================
 -- مسار Masar — ملف قاعدة البيانات الموحّد (هيكل + بيانات تجريبية)
 -- استورد الملف مرة واحدة على قاعدة جديدة. كلمات المرور التجريبية:
---   مدير: Admin@1234  |  طالب: Student@1234  |  جهة: Company@1234
+--   مدير:   |  طالب:   |  جهة: 
 -- =============================================================================
 
 CREATE DATABASE IF NOT EXISTS masar CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -122,57 +122,57 @@ CREATE TABLE PASSWORD_RESET (
     INDEX idx_email_role (email, user_role)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- كلمة مرور المدير: Admin@1234 (bcrypt)
+-- كلمة مرور المدير:  (bcrypt)
 INSERT INTO ADMIN (username, password, full_name, email, role) VALUES
-('admin', '$2y$10$P8.u4tG/E2awPMqFQnJmEuB9wMI/P34K4pJVJTdL2J/wqe3w4Wkv6',
+('admin', '',
  'مدير النظام', 'admin@masar.sa', 'admin');
 
 INSERT INTO UNIVERSITY_SUPERVISOR (full_name, email, phone, university, department) VALUES
 ('د. سوزان جستنية', 'supervisor@uqu.edu.sa', '0500000001', 'جامعة أم القرى', 'برمجة وعلوم حاسب');
 
--- كلمة مرور الطلاب: Student@1234 (bcrypt)
+-- كلمة مرور الطلاب:  (bcrypt)
 INSERT INTO STUDENT (full_name, email, password, phone, university, major, city, academic_year, registration_date, status) VALUES
-('ريف سعد العتيبي',        'reif@uqu.edu.sa',    '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111101', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
-('ريماس محمد العسيري',     'rimas@uqu.edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111102', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
-('وسن سعود الهذلي',        'wasan@uqu.edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111103', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
-('ميار الغامدي',           'miyar@uqu.edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111104', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
-('غلا الكبكبي',            'ghalaa@uqu.edu.sa',  '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111105', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  3, CURDATE(), 'active'),
-('مدى السلمي',             'mada@uqu.edu.sa',    '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111106', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
-('ليان روزن حمزه مليباري', 'layan@uqu.edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111107', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
-('رغد فهد الحربي',         'raghad@uqu.edu.sa',  '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0501111108', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  3, CURDATE(), 'active'),
-('عبدالله فيصل الدوسري',   'abdullah.ksu@edu.sa','$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222001', 'جامعة الملك سعود', 'هندسة حاسوب وشبكات', 'الرياض', 4, CURDATE(), 'active'),
-('نورة خالد الشهري',       'noura.kau@edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222002', 'جامعة الملك عبدالعزيز', 'نظم معلومات إدارية', 'جدة', 3, CURDATE(), 'active'),
-('سارة تركي المطيري',      'sara.pnu@edu.sa',    '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222003', 'جامعة الأميرة نورة', 'تسويق رقمي', 'الرياض', 4, CURDATE(), 'active'),
-('فهد ماجد القحطاني',      'fahad.qassim@edu.sa','$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222004', 'جامعة القصيم', 'محاسبة', 'بريدة', 3, CURDATE(), 'active'),
-('هند سعيد العتيبي',       'hind.taibah@edu.sa', '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222005', 'جامعة طيبة', 'تصميم جرافيكي وتجربة مستخدم', 'المدينة المنورة', 4, CURDATE(), 'active'),
-('خالد يوسف الزهراني',     'khalid.najran@edu.sa','$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222006', 'جامعة نجران', 'هندسة كهربائية', 'نجران', 4, CURDATE(), 'active'),
-('لينا عبدالرحمن باحسين',  'lina.alfaisal@edu.sa','$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222007', 'جامعة الملك فيصل', 'إدارة أعمال', 'الأحساء', 3, CURDATE(), 'active'),
-('عمر حاتم الغامدي',       'omar.ubt@edu.sa',    '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222008', 'جامعة تبوك', 'أمن سيبراني', 'تبوك', 4, CURDATE(), 'active'),
-('دانة مشعل السبيعي',      'dana.imamu@edu.sa',  '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222009', 'جامعة الإمام محمد بن سعود', 'قانون وتقنية', 'الرياض', 3, CURDATE(), 'active'),
-('بدر ناصر الحربي',        'bader.kfu@edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222010', 'جامعة الملك فهد للبترول والمعادن', 'هندسة برمجيات', 'الظهران', 4, CURDATE(), 'active'),
-('جمانة علي العجمي',       'jumana.iau@edu.sa',  '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222011', 'جامعة الإمام عبدالرحمن بن فيصل', 'تحليل أعمال', 'الدمام', 3, CURDATE(), 'active'),
-('طلال راشد المالكي',      'talal.btu@edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222012', 'جامعة الباحة', 'علوم حاسب', 'الباحة', 4, CURDATE(), 'active'),
-('أمل فهد الدلبحي',        'amal.jazan@edu.sa',  '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222013', 'جامعة جازان', 'هندسة صناعية', 'جازان', 3, CURDATE(), 'active'),
-('يوسف حمد العنزي',        'yousef.hail@edu.sa', '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222014', 'جامعة حائل', 'ذكاء اصطناعي وتعلم آلي', 'حائل', 4, CURDATE(), 'active'),
-('شهد بندر القرني',        'shahad.shaqra@edu.sa','$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222015', 'جامعة شقراء', 'تقنية معلومات', 'شقراء', 3, CURDATE(), 'active'),
-('مازن سعد العتيبي',       'mazen.uqu@edu.sa',   '$2y$10$pBUqfGB5Juy/Ehx.nT2mU.YP0JAogM4.2NplV3K4Icxb42waKrWZe', '0502222016', 'جامعة أم القرى', 'هندسة برمجيات', 'مكة المكرمة', 4, CURDATE(), 'active');
+('ريف سعد العتيبي',        'reif@uqu.edu.sa',    '', '0501111101', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
+('ريماس محمد العسيري',     'rimas@uqu.edu.sa',   '', '0501111102', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
+('وسن سعود الهذلي',        'wasan@uqu.edu.sa',   '', '0501111103', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
+('ميار الغامدي',           'miyar@uqu.edu.sa',   '', '0501111104', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
+('غلا الكبكبي',            'ghalaa@uqu.edu.sa',  '', '0501111105', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  3, CURDATE(), 'active'),
+('مدى السلمي',             'mada@uqu.edu.sa',    '', '0501111106', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
+('ليان روزن حمزه مليباري', 'layan@uqu.edu.sa',   '', '0501111107', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  4, CURDATE(), 'active'),
+('رغد فهد الحربي',         'raghad@uqu.edu.sa',  '', '0501111108', 'جامعة أم القرى', 'برمجة وعلوم حاسب', 'مكة المكرمة',  3, CURDATE(), 'active'),
+('عبدالله فيصل الدوسري',   'abdullah.ksu@edu.sa','', '0502222001', 'جامعة الملك سعود', 'هندسة حاسوب وشبكات', 'الرياض', 4, CURDATE(), 'active'),
+('نورة خالد الشهري',       'noura.kau@edu.sa',   '', '0502222002', 'جامعة الملك عبدالعزيز', 'نظم معلومات إدارية', 'جدة', 3, CURDATE(), 'active'),
+('سارة تركي المطيري',      'sara.pnu@edu.sa',    '', '0502222003', 'جامعة الأميرة نورة', 'تسويق رقمي', 'الرياض', 4, CURDATE(), 'active'),
+('فهد ماجد القحطاني',      'fahad.qassim@edu.sa','', '0502222004', 'جامعة القصيم', 'محاسبة', 'بريدة', 3, CURDATE(), 'active'),
+('هند سعيد العتيبي',       'hind.taibah@edu.sa', '', '0502222005', 'جامعة طيبة', 'تصميم جرافيكي وتجربة مستخدم', 'المدينة المنورة', 4, CURDATE(), 'active'),
+('خالد يوسف الزهراني',     'khalid.najran@edu.sa','', '0502222006', 'جامعة نجران', 'هندسة كهربائية', 'نجران', 4, CURDATE(), 'active'),
+('لينا عبدالرحمن باحسين',  'lina.alfaisal@edu.sa','', '0502222007', 'جامعة الملك فيصل', 'إدارة أعمال', 'الأحساء', 3, CURDATE(), 'active'),
+('عمر حاتم الغامدي',       'omar.ubt@edu.sa',    '', '0502222008', 'جامعة تبوك', 'أمن سيبراني', 'تبوك', 4, CURDATE(), 'active'),
+('دانة مشعل السبيعي',      'dana.imamu@edu.sa',  '', '0502222009', 'جامعة الإمام محمد بن سعود', 'قانون وتقنية', 'الرياض', 3, CURDATE(), 'active'),
+('بدر ناصر الحربي',        'bader.kfu@edu.sa',   '', '0502222010', 'جامعة الملك فهد للبترول والمعادن', 'هندسة برمجيات', 'الظهران', 4, CURDATE(), 'active'),
+('جمانة علي العجمي',       'jumana.iau@edu.sa',  '', '0502222011', 'جامعة الإمام عبدالرحمن بن فيصل', 'تحليل أعمال', 'الدمام', 3, CURDATE(), 'active'),
+('طلال راشد المالكي',      'talal.btu@edu.sa',   '', '0502222012', 'جامعة الباحة', 'علوم حاسب', 'الباحة', 4, CURDATE(), 'active'),
+('أمل فهد الدلبحي',        'amal.jazan@edu.sa',  '', '0502222013', 'جامعة جازان', 'هندسة صناعية', 'جازان', 3, CURDATE(), 'active'),
+('يوسف حمد العنزي',        'yousef.hail@edu.sa', '', '0502222014', 'جامعة حائل', 'ذكاء اصطناعي وتعلم آلي', 'حائل', 4, CURDATE(), 'active'),
+('شهد بندر القرني',        'shahad.shaqra@edu.sa','', '0502222015', 'جامعة شقراء', 'تقنية معلومات', 'شقراء', 3, CURDATE(), 'active'),
+('مازن سعد العتيبي',       'mazen.uqu@edu.sa',   '', '0502222016', 'جامعة أم القرى', 'هندسة برمجيات', 'مكة المكرمة', 4, CURDATE(), 'active');
 
--- كلمة مرور الجهات: Company@1234 (bcrypt)
+-- كلمة مرور الجهات:  (bcrypt)
 INSERT INTO TRAINING_ORGANIZATION (organization_name, organization_type, industry_sector, city, phone, email, password, website, description, is_approved, registration_date) VALUES
-('شركة الاتصالات السعودية STC', 'شركة مساهمة',  'تقنية المعلومات والاتصالات', 'الرياض',  '920011111', 'hr@stc.com.sa',        '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://stc.com.sa',    'الشركة الرائدة في قطاع الاتصالات في المملكة.',             1, CURDATE()),
-('أرامكو السعودية',              'شركة مساهمة',  'طاقة وبترول',                'الظهران', '920033333', 'hr@aramco.com',        '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://aramco.com',    'أكبر شركة طاقة في العالم وتقدم فرص تدريب استثنائية.',      1, CURDATE()),
-('شركة علم للخدمات الرقمية',    'شركة مساهمة',  'تقنية المعلومات',            'الرياض',  '920044444', 'intern@elm.sa',        '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://elm.sa',        'متخصصة في الخدمات الحكومية الرقمية.',                       1, CURDATE()),
-('وزارة الاتصالات وتقنية المعلومات','جهة حكومية','حكومي',                     'الرياض',  '920055555', 'training@mcit.gov.sa', '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://mcit.gov.sa',   'الوزارة المشرفة على قطاع الاتصالات ضمن رؤية 2030.',         1, CURDATE()),
-('شركة موبايلي',                 'شركة مساهمة',  'تقنية المعلومات والاتصالات', 'الرياض',  '920066666', 'careers@mobily.com',   '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://mobily.com',    'إحدى أكبر شركات الاتصالات بفرص تدريب متطورة.',              1, CURDATE()),
-('سابك SABIC',                   'شركة مساهمة',  'بتروكيماويات وصناعة',        'الجبيل',  '920077777', 'talent@sabic.com',     '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://sabic.com',     'شركة عالمية في مجال الكيماويات مع برامج تدريب هندسية.',     1, CURDATE()),
-('معادن Maaden',                 'شركة مساهمة',  'تعدين ومعادن',               'الرياض',  '920088888', 'internship@maaden.com.sa','$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36','https://maaden.com.sa','الشركة العربية للتعدين وفرص ميدانية متنوعة.',              1, CURDATE()),
-('البنك الأهلي السعودي',         'شركة مساهمة',  'خدمات مصرفية',               'جدة',     '920099000', 'careers@alahli.com',   '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://alahli.com',    'تدريب في التحول الرقمي والامتثال والتحليل المالي.',        1, CURDATE()),
-('مجموعة مستشفيات الدكتور سليمان الحبيب','شركة مساهمة','رعاية صحية',            'الرياض',  '920010011', 'hr@habib.health',      '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://habib.health', 'تدريب إداري وتقني في بيئة طبية رائدة.',                     1, CURDATE()),
-('الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)','جهة حكومية','بيانات وذكاء اصطناعي','الرياض','920020022','careers@sdaia.gov.sa','$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36','https://sdaia.gov.sa',  'مشاريع وطنية في البيانات والذكاء الاصطناعي.',              1, CURDATE()),
-('شركة زين السعودية',            'شركة مساهمة',  'اتصالات',                    'الرياض',  '920030033', 'jobs@sa.zain.com',     '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://sa.zain.com',   'تدريب تقني وتجربة عميل في قطاع الاتصالات.',                 1, CURDATE()),
-('مؤسسة محمد بن سلمان «مسك»',    'مؤسسة أهلية','ريادة أعمال وتعليم',          'الرياض',  '920040044', 'programs@misk.org.sa', '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://misk.org.sa',   'برامج وطنية للمهارات الرقمية وريادة الأعمال.',              1, CURDATE()),
-('شركة نيوم',                    'شركة مساهمة',  'تطوير عمراني وتقنية',        'نيوم',    '920050055', 'careers@neom.com',     '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://neom.com',      'مشاريع مستقبلية في البنية التحتية والطاقة والتقنية.',       0, CURDATE()),
-('شركة ثقة لخدمات الأعمال',      'شركة مساهمة',  'خدمات تقنية وتوثيق',         'الرياض',  '920060066', 'hr@trust.sa',          '$2y$10$S69FIgQhGkja2n3nZ3jG9.OEOjAhRtccmafBY00vHqJ2icB.tBf36', 'https://trust.sa',      'حلول رقمية للقطاعين العام والخاص.',                         1, CURDATE());
+('شركة الاتصالات السعودية STC', 'شركة مساهمة',  'تقنية المعلومات والاتصالات', 'الرياض',  '920011111', 'hr@stc.com.sa',        '', 'https://stc.com.sa',    'الشركة الرائدة في قطاع الاتصالات في المملكة.',             1, CURDATE()),
+('أرامكو السعودية',              'شركة مساهمة',  'طاقة وبترول',                'الظهران', '920033333', 'hr@aramco.com',        '', 'https://aramco.com',    'أكبر شركة طاقة في العالم وتقدم فرص تدريب استثنائية.',      1, CURDATE()),
+('شركة علم للخدمات الرقمية',    'شركة مساهمة',  'تقنية المعلومات',            'الرياض',  '920044444', 'intern@elm.sa',        '', 'https://elm.sa',        'متخصصة في الخدمات الحكومية الرقمية.',                       1, CURDATE()),
+('وزارة الاتصالات وتقنية المعلومات','جهة حكومية','حكومي',                     'الرياض',  '920055555', 'training@mcit.gov.sa', '', 'https://mcit.gov.sa',   'الوزارة المشرفة على قطاع الاتصالات ضمن رؤية 2030.',         1, CURDATE()),
+('شركة موبايلي',                 'شركة مساهمة',  'تقنية المعلومات والاتصالات', 'الرياض',  '920066666', 'careers@mobily.com',   '', 'https://mobily.com',    'إحدى أكبر شركات الاتصالات بفرص تدريب متطورة.',              1, CURDATE()),
+('سابك SABIC',                   'شركة مساهمة',  'بتروكيماويات وصناعة',        'الجبيل',  '920077777', 'talent@sabic.com',     '', 'https://sabic.com',     'شركة عالمية في مجال الكيماويات مع برامج تدريب هندسية.',     1, CURDATE()),
+('معادن Maaden',                 'شركة مساهمة',  'تعدين ومعادن',               'الرياض',  '920088888', 'internship@maaden.com.sa','','https://maaden.com.sa','الشركة العربية للتعدين وفرص ميدانية متنوعة.',              1, CURDATE()),
+('البنك الأهلي السعودي',         'شركة مساهمة',  'خدمات مصرفية',               'جدة',     '920099000', 'careers@alahli.com',   '', 'https://alahli.com',    'تدريب في التحول الرقمي والامتثال والتحليل المالي.',        1, CURDATE()),
+('مجموعة مستشفيات الدكتور سليمان الحبيب','شركة مساهمة','رعاية صحية',            'الرياض',  '920010011', 'hr@habib.health',      '', 'https://habib.health', 'تدريب إداري وتقني في بيئة طبية رائدة.',                     1, CURDATE()),
+('الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)','جهة حكومية','بيانات وذكاء اصطناعي','الرياض','920020022','careers@sdaia.gov.sa','','https://sdaia.gov.sa',  'مشاريع وطنية في البيانات والذكاء الاصطناعي.',              1, CURDATE()),
+('شركة زين السعودية',            'شركة مساهمة',  'اتصالات',                    'الرياض',  '920030033', 'jobs@sa.zain.com',     '', 'https://sa.zain.com',   'تدريب تقني وتجربة عميل في قطاع الاتصالات.',                 1, CURDATE()),
+('مؤسسة محمد بن سلمان «مسك»',    'مؤسسة أهلية','ريادة أعمال وتعليم',          'الرياض',  '920040044', 'programs@misk.org.sa', '', 'https://misk.org.sa',   'برامج وطنية للمهارات الرقمية وريادة الأعمال.',              1, CURDATE()),
+('شركة نيوم',                    'شركة مساهمة',  'تطوير عمراني وتقنية',        'نيوم',    '920050055', 'careers@neom.com',     '', 'https://neom.com',      'مشاريع مستقبلية في البنية التحتية والطاقة والتقنية.',       0, CURDATE()),
+('شركة ثقة لخدمات الأعمال',      'شركة مساهمة',  'خدمات تقنية وتوثيق',         'الرياض',  '920060066', 'hr@trust.sa',          '', 'https://trust.sa',      'حلول رقمية للقطاعين العام والخاص.',                         1, CURDATE());
 
 INSERT INTO TRAINING_OPPORTUNITY (organization_id, title, description, required_major, duration_weeks, start_date, end_date, available_positions, requirements, benefits, is_active, posted_date) VALUES
 (1,'متدرب تطوير تطبيقات ويب',   'العمل مع فريق تطوير الويب في STC على مشاريع حقيقية باستخدام أحدث التقنيات.','برمجة وعلوم حاسب',12,'2026-07-01','2026-09-24',5,'HTML, CSS, JavaScript, PHP أو Python','مكافأة شهرية 3000 ريال، شهادة إتمام، إمكانية التوظيف',1,CURDATE()),
